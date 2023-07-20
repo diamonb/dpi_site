@@ -1,0 +1,231 @@
+/* li scroller css*/
+.tickercontainer {
+    background: #fff;
+    height: 27px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.tickercontainer .mask {
+    position: relative;
+    left: 10px;
+    top: 8px;
+
+    overflow: hidden;
+}
+ul.newsticker {
+    position: relative;
+    left: 750px;
+    font: bold 10px Verdana;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+ul.newsticker li {
+    float: left;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+}
+ul.newsticker a {
+    white-space: nowrap;
+    padding: 0;
+    color: #000000;
+    font: bold 10px Verdana;
+    margin: 0 100px 0 0;
+}
+ul.newsticker span {
+    margin: 0 10px 0 0;
+}
+/* for befor loading */
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url("../images/gifs/Preloader_2.gif") center no-repeat #fff;
+}
+
+/* TG3000*/
+/*body{background-color: #ebebe0; font-family:sans-serif;}*/
+.carousel1{background: linear-gradient(#333333, #1a1a1a);;  background-size: cover;}
+.carousel2{background-image: url("../bannieres/banreunion.jpeg");  background-size: cover; }
+.carousel3{background-image: url("../bannieres/banniere3.jpg");  background-size: cover; }
+.historique{background-image: url("../bannieres/logo_nouveau.png");  background-size: cover;}
+.carousel1, .carousel2, .carousel3{height: 700px}
+.background_caption{color: #fff; margin-top: 60%}
+.header_ban{background-image: url("../bannieres/it1.jpg")}
+.center_text{margin: 50px}
+.section_title{background-color: silver; color: #548235 ; text-align: center}
+.moyens div img{width: 100px; margin-left: 20%}
+.moyens .row{margin-top: 20px;}
+/*.moyens .row .col-lg:hover{  transform: scale(1.1);}*/
+p, ul li,.cardbody{font-size: small}
+.titre{font-weight: bold; font-size: 25px;}
+.cardhead{height: 200px}
+.snpt .cardhead{background: url("../images/snpt.jpg")}
+.ministere .cardhead{background: url("../images/ministere.jpg")}
+.dgtcp .cardhead{background: url("../images/dgtcp.jpg")}
+.mycard{margin-top: 10px}
+/*.col-lg-3 img{ height: 250px; width: 100%}*/
+/*.materiels .col-lg-3{ height: 250px; margin-top: 5px}*/
+.foot{background: #3f3f3f; color: #fff}
+.foot_bottom{background: #777777}
+.section_nous_suivre img{width: 40px}
+.evidence_title{color: #ffff00; font-size: 40px; text-justify: inter-word}
+.detail{text-justify: inter-word;font-size: 20px; color:#fff; font-weight: bold;}
+.detail3{text-justify: inter-word;font-size: 20px; color:silver; font-weight: bold;}
+.detai{text-justify: inter-word;font-size: 20px;color: black}
+.evidence_title1{color: #ff0000; font-size: 40px; text-justify: inter-word}
+.evidence_title3{color: #548235; font-size: 40px; text-justify: inter-word}
+.evidence_title, .evidence_title1, .evidence_title3{font-weight: bold}
+.card-black{background-color: #000}
+.card-green{background-color:#548235 }
+.logoo b{font-size: 20px}
+.presentation{text-align: justify}
+.tittle{color: midnightblue}
+.galerielighbox a img{width: 200px}
+.galerielighbox .galerieformation,.galerietous, .galerieentreprise a img{margin-bottom: 30px}
+.galerielighbox div{margin-top: 50px}
+.accesoires,.materiels, .consommables, .logociels{margin-top: 30px;}
+.servicepane{margin-top: 20px;}
+.ri_infos{font-size: 15}
+.details_prestation_reseau ol li{color:#ff0000; font-weight: bolder;margin-bottom: 5px;}
+.cardrect{height: 350px;}
+.cardcommunuelogiciel{height: 480px; zoom: 0.8;}
+
+/*div{border: 1px solid blue;}*/
+
+/* pour le slide des clients */
+h2{
+  text-align:center;
+  padding: 20px;
+}
+
+/* slide client */
+h2{
+  text-align:center;
+  padding: 20px;
+}
+/* Slider */
+
+.slick-slide {
+    margin: 0px 20px;
+}
+
+.slick-slide img {
+    width: 100%;
+}
+
+.slick-slider
+{
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+            user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+        touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list
+{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+.slick-list:focus
+{
+    outline: none;
+}
+.slick-list.dragging
+{
+    cursor: pointer;
+    cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list
+{
+    -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+         -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+}
+
+.slick-track
+{
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+}
+.slick-track:before,
+.slick-track:after
+{
+    display: table;
+    content: '';
+}
+.slick-track:after
+{
+    clear: both;
+}
+.slick-loading .slick-track
+{
+    visibility: hidden;
+}
+
+.slick-slide
+{
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+}
+[dir='rtl'] .slick-slide
+{
+    float: right;
+}
+.slick-slide img
+{
+    display: block;
+}
+.slick-slide.slick-loading img
+{
+    display: none;
+}
+.slick-slide.dragging img
+{
+    pointer-events: none;
+}
+.slick-initialized .slick-slide
+{
+    display: block;
+}
+.slick-loading .slick-slide
+{
+    visibility: hidden;
+}
+.slick-vertical .slick-slide
+{
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+}
+.slick-arrow.slick-hidden {
+    display: none;
+}
+/* fin slide client */

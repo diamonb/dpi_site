@@ -1,0 +1,366 @@
+
+
+carousel-item .container-fluid{color: #fff;}
+.ca1{
+     background-image: url("../images/bannieres/snow_fr.jpeg");  
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-position: center;
+     height: 100vh;
+}
+.ca2{
+    background-image: url("../images/bannieres/snow.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+}
+.ca3{
+    background-image: url("../images/bannieres/fuel.jpeg");  
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.ca4{
+    background-image: url("../images/bannieres/banpub.jpeg");  
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+}
+div.carousel-item > .container-fluid > .row{
+    margin-top: 25%;
+}
+.side_1{
+
+    min-height: 500px;
+    
+}
+.side_2{
+    min-height: 500px;
+}
+
+.ourcompagny{
+    margin-top: 80px;
+}
+.colOurcompagny{
+    font-size: 20px;
+}
+.rowvision>div{
+    margin-right: 5px;
+}
+
+.rowvision>div:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    font-size: 15px;
+}
+.finance_class{
+    margin-top: 50px;
+}
+.marketing_class{
+    margin-top: 50px;
+}
+.digital_class{
+    margin-top: 50px;
+}
+.rowvision{
+    text-align: center;
+}
+.marketing_text{
+    background-color: #DB2414; 
+    /*min-height: 300px;*/
+}
+
+.leadership_text{
+    background-color: #EAAE1B; 
+    /*min-height: 300px;*/
+}
+.finance_text{
+    background-color: #1660A9; 
+    min-height: 300px;
+}
+.marketing{
+    
+    zoom: 0.9;
+}
+.bt-box{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.dpi-bg-danger{
+    background-color: #DB2414;
+}
+.dpi-bg-succes{
+    background-color: #2E9A3F;
+}
+
+.dpi-bg-warning{
+    background-color: #fcc200;
+}
+
+
+.tooltip-inner {
+     max-width: 500px !important; 
+     background-color: #fff !important; 
+     color: #000; 
+     text-align: justify !important;
+     text-justify: inter-word !important;
+    }
+.digital_text{
+    background-color: #2E9A3F ; 
+    min-height: 300px;
+}
+.rowcontacticone>div>div>div>i{color:#fcc200 }
+.btn-dpi{background-color: #fcc200; color: #000;}
+
+.dpi_text{
+    background-color: #fcc200 ; 
+    min-height: 300px;
+}
+.digital_text a,.finance_text a,.marketing_text a{
+    color: rgb(189, 189, 9);
+}
+.when_call_text{
+    background-color: #004c94; 
+}
+.nosservice p{font-weight: bold;}
+
+div#top-bar{
+    height:35px;
+    background-color: #fcc200;
+    text-align: right;
+}
+
+.entete_column{
+    background-color: #fcc200 ;
+    color: #fff;
+}
+
+div#d_infos .row{
+    margin: 10px;
+   
+}
+
+.nosservice div .col-md-3 img{
+    width: 100%;
+}
+#service{
+    display: grid;
+    grid-template-columns: 45% 55% ;
+    background-color: gray;  
+}
+#galerieimage{
+    display: grid;
+    grid-template-columns: 33% 33% 33% ;  
+}
+.essai{
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(80px , yellow, green)
+}
+.banniere_shop, .banniere_contact{
+    color: #fff;
+}
+.banniere_contact{
+    background-image: url('../images/bannieres/banner-bg.jpg');
+    height: 300px;
+}
+.banniere_marketing{
+    background-image: url('../images/bannieres/ban_maketing.png');
+    height: 300px;
+}
+
+.banniere_shop{
+    background-image: url('../images/bannieres/dielsurvey.jpeg');
+    height: 300px;
+    width: 100%;
+}
+.banniere_avis{
+    background-image: url('../images/bannieres/ban1.jpg');
+    height: 200px;
+}
+.pied{
+    background-image: url('../images/bannieres/banner-bg.jpg');
+    height: 400px;  
+    background-color: transparent;
+}
+.bar_titre{
+    height: 40px;
+    background: linear-gradient(60deg,#ccc, green);
+    color: #ccc;
+
+}
+/* pour le slide des clients */
+h2{
+    text-align:center;
+    padding: 20px;
+}
+  
+  /* slide client */
+h2{
+    text-align:center;
+    padding: 20px;
+}
+
+/* Slider */
+
+.slick-slide {
+    margin: 0px 20px;
+}
+
+.slick-slide img {
+    width: 100%;
+}
+
+.slick-slider
+{
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+            user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+        touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list
+{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+.slick-list:focus
+{
+    outline: none;
+}
+.slick-list.dragging
+{
+    cursor: pointer;
+    cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list
+{
+    -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+         -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+}
+
+.slick-track
+{
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+}
+.slick-track:before,
+.slick-track:after
+{
+    display: table;
+    content: '';
+}
+.slick-track:after
+{
+    clear: both;
+}
+.slick-loading .slick-track
+{
+    visibility: hidden;
+}
+
+.slick-slide
+{
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+}
+[dir='rtl'] .slick-slide
+{
+    float: right;
+}
+.slick-slide img
+{
+    display: block;
+}
+.slick-slide.slick-loading img
+{
+    display: none;
+}
+.slick-slide.dragging img
+{
+    pointer-events: none;
+}
+.slick-initialized .slick-slide
+{
+    display: block;
+}
+.slick-loading .slick-slide
+{
+    visibility: hidden;
+}
+.slick-vertical .slick-slide
+{
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+}
+.slick-arrow.slick-hidden {
+    display: none;
+}
+/* fin slide client */
+
+/* scroll to top */
+#myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #fcc200; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 18px; /* Increase font size */
+  }
+  
+  #myBtn:hover {
+    background-color: #555; /* Add a dark-grey background on hover */
+  }
+
+  #myBtnParticipent {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 100px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #fcc200; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 18px; /* Increase font size */
+  }
+  
+  #myBtnParticipent:hover {
+    background-color: #555; /* Add a dark-grey background on hover */
+  }
+  
+/*div{
+    border: 1px solid black;
+}*/
