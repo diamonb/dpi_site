@@ -22,23 +22,24 @@
 <div class="container mt-2">
 
     <div class="row">
-        
-        <div class="col-lg-12">
-            <div class="accordion mb-5" id="accordionExample">
-            @foreach($faqs as $faq)
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo{{$faq->id_faq}}">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo{{$faq->id_faq}}" aria-expanded="false" aria-controls="collapseTwo{{$faq->id_faq}}">
-                        <strong>{{$faq->question}}</strong>
-                    </button>
-                    </h2>
-                    <div id="collapseTwo{{$faq->id_faq}}" class="accordion-collapse collapse" aria-labelledby="headingTwo{{$faq->id_faq}}" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        {!!$faq->response!!}
-                    </div>
-                    </div>              
+        <div class="col-lg-2">
+            <div class="card">
+                <div class="card-heading">
+                    FAQ CATEGORIES
                 </div>
-                @endforeach
+            </div>
+            
+            <br>
+            @foreach($cfaqs as $faq)
+
+            <p><a href="">{{$faq->libelle}}</a></p>
+            <hr>
+            
+            @endforeach
+        </div>
+        <div class="col-lg-10">
+            <div class="accordion mb-5" id="accordionExample">
+           
             </div>
         </div>
         

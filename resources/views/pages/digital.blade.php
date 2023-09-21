@@ -10,10 +10,16 @@
                 </div>
               </div>
 </div>
-
-  <div class="">
+  <div class="container">
+  <div class="row">
+      <div class="col">
         <p class="text-center mt-4"><strong>Our Digital services and solutions for your growth.</strong></p>
+        <p class="text-center mt-4">From web development and e-commerce solutions to digital marketing and app development, we are your strategic partner in the digital landscape. Let's navigate the digital world together and drive your business towards new heights."</p>
+      </div>
+          
+    </div>
   </div>
+
 
    <div class="container digital_class" id="digital">
    <div class="row">

@@ -267,12 +267,14 @@
               Applications
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" target="_blank" href="{{route('dobusiness')}}"> Do bussiness with us</a></li>
+                <li><a class="dropdown-item" target="_blank" href="{{route('becomeclient')}}"> Client Application</a></li>
+                <li><a class="dropdown-item" target="_blank" href="{{route('dobusiness')}}"> Do bussiness with us</a></li>
                 <li><a class="dropdown-item" target="_blank" href="{{route('consultant')}}"> Become a Consultant</a></li>
                 <li><a class="dropdown-item"  target="_blank" href="{{route('partner')}}">Partner with us</a></li>
                 <li><a class="dropdown-item" target="_blank" href="{{route('founder')}}">Become a Founder</a></li>
                 <li><a class="dropdown-item" target="_blank" href="{{route('investwithus')}}">Invest with us</a></li>
                 <li><a class="dropdown-item" target="_blank" href="{{route('sponsor')}}">Sponsor/Donate</a></li>
+                <li><a class="dropdown-item" target="_blank" href="{{route('fund')}}">Fund your business</a></li>
                 <li><a class="dropdown-item" target="_blank" href="{{route('career')}}">Career</a></li>
               </ul>
             </li>

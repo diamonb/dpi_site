@@ -7,12 +7,13 @@
 <div class="row ">
 
     <!--Grid column-->
-    <div class="col-md-6">
+    <div class="col-lg-6">
         <img src="{{asset('images/dobusiness.jpeg')}}" width="100%" alt="">
     </div>
 
-    <div class="col-md-6">
-    <h2 class="text-center w-responsive mx-auto h1">Do business with us!</h2>
+    <div class="col-lg-6">
+    <h2 class="text-center w-responsive mx-auto h1">Do business with us</h2>
+    <cite>Open doors to new possibilities! This application welcomes you to do business with us. Share your interests and needs as we seek to understand how we can best serve you. Let's forge a rewarding business relationship together. Apply now and let's explore the potential of working together for mutual success!</cite>
         @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -37,293 +38,134 @@
         <span class="text-danger">{{$message}}</span>
         @enderror
 
-        <form id="do_business-form" name="do_business-form" action="{{route('do_business')}}" method="POST">
+        <form id="do_business-form" enctype="multipart/form-data" action="{{route('do_business')}}" method="POST">
         {{csrf_field()}}
-            <div class="form-group">
+        <br>
+        <div class="row">
+            <div class="form-group col-md-6">
                 <label for="company"><strong>Company name *</strong></label>
                 <input type="text" class="form-control" id="company" name="company" placeholder="">
             </div>
-            <div class="form-group">
-                <label for="industry"><strong>Industry *</strong></label>
-                <input type="text" class="form-control" id="industry" name="industry" placeholder="">
+            <div class="form-group col-md-6">
+                <label for="business_adress"><strong>Business Address *</strong></label>
+                <input type="text" class="form-control" id="business_adress" name="business_adress" placeholder="">
             </div>
-            <div class="form-group">
-                <label for="business_area"><strong>Business Area *</strong></label>
-                <input type="text" class="form-control" id="business_area" name="business_area" placeholder="">
-            </div>
-            <div class="form-group">
-                <label for=""><strong>How long have you been in business? *</strong></label>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="duration" id="duration" value="1" checked>
-                            <label class="form-check-label" for="duration">
-                                -3 years
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="duration" id="duration" value="2" checked>
-                            <label class="form-check-label" for="duration">
-                                3 - 5 years
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="duration" id="duration" value="3" checked>
-                            <label class="form-check-label" for="duration">
-                                5 - 10 years
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="duration" id="duration" value="4" checked>
-                            <label class="form-check-label" for="duration">
-                                10 - 15 years
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="duration" id="duration" value="5" checked>
-                            <label class="form-check-label" for="duration">
-                                15 years +
-                            </label>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <br>
-            <div class="form-group">
-                <label for=""><strong>Do business with with *</strong></label>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="">
-                            DPI (All BU)
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="">
-                            DPI MS (Marketing & Services)
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="">
-                            DPI Fin. (Financial Services)
-                            </label>
-                        </div>
-                    </div>
+        </div>
+        <br>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="industry"><strong>Industry/Niche *</strong></label>
+                    <input type="text" class="form-control" id="industry" name="industry" placeholder="">
                 </div>
 
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="">
-                            DPI Digital
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="">
-                            DIELShop
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="">
-                            DIELtoPub
-                            </label>
-                        </div>
-                    </div>
-                </div>
+                <div class="form-group col-md-6">
+                <label for=""><strong>Year Etablished</strong></label>
+                    <select name="year_etablished" class="form-control" id="">
 
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="">
-                            DIELSurvey
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="">
-                            DIELBNews
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="">
-                            DIELDelivery
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="">
-                            DIELVANDIEL
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="">
-                            ISSINE
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="">
-                            ISSINEVANISSINE
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="">
-                            ISSINE Beauty
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="">
-                            ISSINE Foods
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="">
-                            ISSINE eTire Shop
-                            </label>
-                        </div>
-                    </div>
+                    @for ($i = 0; $i < 224; $i++)
+                    <option value="{{1800 +$i}}">{{1800 +$i}}</option>
+                    @endfor
+                    </select>
+                    
                 </div>
             </div>
             <br>
-            <div class="form-group">
-                <label for=""><strong>Type ?</strong></label>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="type" id="duration" value="1" checked>
-                            <label class="form-check-label" for="">
-                            Commercial
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="type" id="duration" value="2" checked>
-                            <label class="form-check-label" for="">
-                            Joint-Venture
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="type" id="duration" value="3" checked>
-                            <label class="form-check-label" for="">
-                            Co-Owner
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="type" id="duration" value="4" checked>
-                            <label class="form-check-label" for="">
-                            All
-                            </label>
-                        </div>
-                    </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="number"><strong>Contact Person/Title*</strong></label>
+                <input type="text" class="form-control" name="contact_person"  placeholder="">
+            </div>
+            <div class="form-group col-md-6">
+                    <label for="number"><strong>Phone Phone Number *</strong></label>
+                    <input type="number" class="form-control" name="number" id="number" placeholder="">                  
+            </div>
 
+
+        </div>
+        <br>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="email"><strong>Contact Email*</strong></label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="Website"><strong>Website URL</strong></label>
+                    <input type="text" class="form-control" id="Website" name="website" placeholder="">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label class="" for="country"><strong>Country</strong></label>
+                    <select name="country" class="form-select" id="country">
+                        @foreach($countries as $country)
+                        <option value="{{$country->id}}">{{$country->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="city"><strong>City/town *</strong></label>
+                    <input type="text" class="form-control" name="city" id="city" placeholder="">
                 </div>
             </div>
             <br>
             <div class="form-group">
-                <label for="tell_us">Tell us  about your company and collaboration expectations *</label>
-                <input type="text" class="form-control" id="tell_us" name="tell_us" placeholder="">
+                <label for="zip"><strong>Zip code</strong></label>
+                <input type="zip" class="form-control" name="zip" id="zip" placeholder="">
             </div>
             <br>
             <div class="form-group">
-                <label for="Website">Website</label>
-                <input type="text" class="form-control" id="Website" name="website" placeholder="">
+                <label for=""><strong>What are the core values that guide your company's decisions and actions?</strong></label>
+                <textarea class="form-control" name="core_value" placeholder=""></textarea>
             </div>
             <br>
             <div class="form-group">
-                <label for=""><strong>Preferred language *</strong></label>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="language" id="language" value="1" checked>
-                            <label class="form-check-label" for="">
-                            English
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="language" id="language" value="2" checked>
-                            <label class="form-check-label" for="">
-                            Spanish
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="language" id="language" value="3" checked>
-                            <label class="form-check-label" for="">
-                            French
-                            </label>
-                        </div>
-                    </div>
-                </div>   
+                <label for=""><strong>What interests you in partnering with our company?</strong></label>
+                <textarea class="form-control" name="interest" placeholder=""></textarea>
             </div>
             <br>
-
+            <div class="form-group">
+                <label for=""><strong>How do you see your company's strengths complementing our business?</strong></label>
+                <textarea class="form-control" name="strength" placeholder=""></textarea>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for=""><strong>What specific goals or objectives do you aim to achieve through this partnership?</strong></label>
+                <textarea class="form-control" name="goals" placeholder=""></textarea>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for=""><strong>What is your primary field of interest for conducting business with us?</strong></label>
+                <select class="form-control" name="primary_field" placeholder="">
+                    <option value="DPI (All)">DPI (All)</option>
+                    <option value="DPI MS (Marketing & Services)">DPI MS (Marketing & Services)</option>
+                    <option value="DPI Digital">DPI Digital</option>
+                    <option value="DPI Fin. (Financial Services)">DPI Fin. (Financial Services)</option>
+                    <option value="DIELShop">DIELShop</option>
+                    <option value="DIELtoPub">DIELtoPub</option>
+                    <option value="DIELSurvey">DIELSurvey</option>
+                    <option value="DIELBnews">DIELBnews</option>
+                    <option value="DIELDelivery">DIELDelivery</option>
+                    <option value="DIELVANDIEL">DIELVANDIEL</option>
+                    <option value="ISSINE">ISSINE</option>
+                    <option value="ISSINE VANISSINE">ISSINE VANISSINE</option>
+                    <option value="ISSINE Beauty">ISSINE Beauty</option>
+                    <option value="ISSINE Foods">ISSINE Foods</option>
+                    <option value="ISSINE Beauty">ISSINE RestO</option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for=""><strong>What are your expectations from our company as a potential partner?</strong></label>
+                <textarea class="form-control" name="expectation" placeholder=""></textarea>
+            </div>
+            <br>
             <div class="form-group">
                 <label for=""><strong>How did you hear about us *</strong></label>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="hear" id="hear" value="1" checked>
+                            <input class="form-check-input" type="radio" name="hear" id="hear" value="Facebook/WhatsApp">
                             <label class="form-check-label" for="">
                             Facebook/WhatsApp
                             </label>
@@ -331,7 +173,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="hear" id="hear" value="2" checked>
+                            <input class="form-check-input" type="radio" name="hear" id="hear" value="Linkedin">
                             <label class="form-check-label" for="">
                             Linkedin
                             </label>
@@ -339,7 +181,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="hear" id="hear" value="3" checked>
+                            <input class="form-check-input" type="radio" name="hear" id="hear" value="Website">
                             <label class="form-check-label" for="">
                             Website
                             </label>
@@ -349,7 +191,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="hear" id="hear" value="4" checked>
+                            <input class="form-check-input" type="radio" name="hear" id="hear" value="Current Business">
                             <label class="form-check-label" for="">
                             Current Business
                             </label>
@@ -357,7 +199,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="hear" id="hear" value="5" checked>
+                            <input class="form-check-input" type="radio" name="hear" id="hear" value="Previous Business">
                             <label class="form-check-label" for="">
                             Previous Business
                             </label>
@@ -365,7 +207,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="hear" id="hear" value="6" checked>
+                            <input class="form-check-input" type="radio" name="hear" id="hear" value="Friend (word of mouth)">
                             <label class="form-check-label" for="">
                             Friend (word of mouth)
                             </label>
@@ -375,71 +217,20 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="hear" id="hear" value="7" checked>
+                            <input class="form-check-input" type="radio" name="hear" id="hear" value="Walk in">
                             <label class="form-check-label" for="">
                             Walk in
                             </label>
                         </div>
                     </div>
                 </div>
+                <br>
+                <div class="form-group">
+                    <label for=""><strong>Attachement</strong></label>
+                    <input type="file" class="form-control" name="attachement">
+                </div>
                 
             </div>
-            <fieldset class="scheduler-border">
-                <legend class="scheduler-border">Business information</legend>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="first_name"><strong>First name</strong></label>
-                                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="last_name"><strong>Last name</strong></label>
-                                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="">
-                            </div>
-                   
-                        </div>
-                    </div>
-                    <div class="row">
-                            <div class="form-group">
-                                <label for="email"><strong>Email *</strong></label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="number"><strong>Number *</strong></label>
-                                <input type="number" class="form-control" name="number" id="number" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="zip"><strong>Zip/Postal code</strong></label>
-                                <input type="zip" class="form-control" name="zip" id="zip" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="adress"><strong>Address *</strong></label>
-                                <input type="text" class="form-control" name="adress" id="adresse" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="adresse_deux"><strong>Address 2</strong></label>
-                                <input type="text" class="form-control" name="adresse_deux"  id="adresse_deux" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="city"><strong>City/town *</strong></label>
-                                <input type="text" class="form-control" name="city" id="city" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="state"><strong>State / Province *</strong></label>
-                                <input type="text" class="form-control" id="state" name="state" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label class="" for="country"><strong>Country</strong></label>
-                                <select name="country" class="form-select" id="country">
-                                    @foreach($countries as $country)
-                                    <option value="{{$country->id}}">{{$country->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                    </div>
-            </fieldset>
             <br>
             <div class="text-center text-md-left">
                 <button class="btn btn-dpi" >Send</button>

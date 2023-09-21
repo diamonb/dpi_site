@@ -29,7 +29,7 @@
                         <form action="{{route('delete_survey')}}" method="POST">
                             @csrf
                             <input type="hidden" value="{{$survey->id_survey}}" name="id_survey">
-                        <button class="btn btn-danger"  onclick="return confirm('Are you sure you want to delete?');">Delete </button>
+                        <button class="btn btn-danger"  onclick="return confirm('Are you sure you want to delete/archive?');">Delete/Archive</button>
                         </form>
                         
                        <button class="btn btn-success">Update</button></td>

@@ -15,6 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{asset('css/lightbox.css')}}" rel="stylesheet" />
     <link rel="canonical" href="https://icons.getbootstrap.com/">
+    <link rel="icon" type="image/x-icon" href="/images/icons/favicon.ico">
     
     <!-- Bootstrap Icons CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="stylesheet">

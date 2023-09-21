@@ -11,14 +11,19 @@
                 </div>
               </div>
 </div>
-
-  <div class="">
-        <p class="text-center mt-4"><strong>Our Financial services for your growth.</strong></p>
+  <div class="container">
+  <div class="row">
+      <div class="col">
+          <p class="text-center mt-4"><strong>Our Financial services for your growth.</strong></p>
+          <p class="text-center mt-4">Embark on a journey of financial opportunities with DPI Fin. We are dedicated to helping individuals and businesses achieve their financial goals, fostering growth and success.</p>
+      </div>
+    </div>
   </div>
 
 
   <div class="container mb-5 finance_class" id="finance">
     <div class="row">
+   
           @foreach($services as $service)
 
           <div class="col-lg-4">

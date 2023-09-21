@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fund;
 use App\Models\User;
 use App\Models\Order;
+use App\Mail\FundMail;
 use App\Models\Career;
+use App\Models\Client;
 use App\Models\Domain;
 use App\Models\Invest;
 use App\Mail\OrderMail;
@@ -14,12 +17,14 @@ use App\Models\Founder;
 use App\Models\Service;
 use App\Models\Sponsor;
 use App\Mail\CareerMail;
+use App\Mail\ClientMail;
 use App\Mail\InvestMail;
 use App\Mail\NotifyMail;
 use App\Mail\ContactMail;
 use App\Mail\FounderMail;
 use App\Mail\SponsorMail;
 use App\Mail\PartenerMail;
+use App\Models\consultant;
 use App\Models\Dobusiness;
 use App\Models\Newsletter;
 use App\Models\Servicenow;
@@ -33,8 +38,10 @@ use App\Mail\participentMail;
 use App\Mail\ServicenowMailFr;
 use App\Models\PartenerWithUs;
 use App\Mail\ContactNotifyMail;
+use App\Mail\FundNotificationMail;
 use App\Mail\OrderNotificationMail;
 use App\Mail\CareerMailNotification;
+use App\Mail\ClientNotificationMail;
 use App\Mail\InvestMailNotification;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\FounderNotificationMail;
@@ -344,38 +351,49 @@ class FormController extends Controller
     {
         $validated = $request->validate([
             'company' => 'required|max:255',
-            'industry' => 'required|max:255'
-            /*'business_area' => 'required',
-            'duration' => 'required',
-            'type' => 'required',
-            'tell_us' => 'required',
-            'hear' => 'required',
+            'industry' => 'required|max:255',
+            'business_adress' => 'required',
+            'year_etablished' => 'required',
+            'contact_person' => 'required',
+            'number' => 'required',
             'email' => 'required|max:255',
-            'address' => 'required|max:255',
+            'country' => 'required',
             'city' => 'required',
-            'state' => 'required',
-            'country' => 'required',*/
+            'core_value'=>'required',
+            'interest'=>'required',
+            'strength'=>'required',
+            'goals'=>'required',
+            'expectation'=>'required',
+            'attachement'=>'file',
+            'hear' => 'required',
+            
         ]);
         $reference = 'DPI_DB_'.time();
+        $fileName=null;
+
+        if($request->attach !== null){
+            $fileName = "images/applications/".time().$request->attachement->extension(); 
+            $request->attach->move('images/applications', $fileName);
+        }
         $dobusiness = new Dobusiness;
  
         $dobusiness->company = $request->company;
         $dobusiness->industry = $request->industry;
-        $dobusiness->business_area = $request->business_area;
-        $dobusiness->business_long = $request->duration;
-        $dobusiness->business_with = 1;
-        $dobusiness->type = $request->type;
-        $dobusiness->tell_us = $request->tell_us;
-        $dobusiness->language = $request->language;
-        $dobusiness->hear = $request->hear;
-        $dobusiness->first_name = $request->first_name;
-        $dobusiness->last_name = $request->last_name;
+        $dobusiness->business_adress = $request->business_adress;
+        $dobusiness->year_etablished = $request->year_etablished;
+        $dobusiness->contact_person = $request->contact_person;
         $dobusiness->email = $request->email;
-        $dobusiness->address = $request->country;
-        $dobusiness->number = $request->number;
+        $dobusiness->hear = $request->hear;
+        $dobusiness->core_value = $request->core_value;
+        $dobusiness->interest = $request->interest;
+        $dobusiness->strength = $request->strength;
+        $dobusiness->goals = $request->goals;
+        $dobusiness->expectation = $request->expectation;
+        $dobusiness->primary_field = $request->primary_field;
         $dobusiness->city = $request->city;
-        $dobusiness->state = $request->city;
-        $dobusiness->country = $request->country;
+        $dobusiness->country = $request->country; 
+        $dobusiness->number = $request->number;
+        $dobusiness->attachement = $fileName;
         $dobusiness->reference = $reference;
 
 
@@ -392,12 +410,11 @@ class FormController extends Controller
 
      public function save_become_consultant(Request $request)
     {
-       /* $validated = $request->validate([
-            'company' => 'required|max:255',
-            'industry' => 'required|max:255'
-            /*'business_area' => 'required',
-            'duration' => 'required',
-            'type' => 'required',
+       $validated = $request->validate([
+            'industry' => 'required|max:255',
+            'business_area' => 'required',
+            'business_long' =>'required',
+            'number' => 'required',
             'tell_us' => 'required',
             'hear' => 'required',
             'email' => 'required|max:255',
@@ -405,38 +422,48 @@ class FormController extends Controller
             'city' => 'required',
             'state' => 'required',
             'country' => 'required',
-        ]);*/
+            'attachement'=>'file'
+       ]);
         $reference = 'DPI_BC_'.time();
-        $dobusiness = new Dobusiness;
- 
-        $dobusiness->company = $request->company;
-        $dobusiness->industry = $request->industry;
-        $dobusiness->business_area = $request->business_area;
-        $dobusiness->business_long = $request->duration;
-        $dobusiness->business_with = 1;
-        $dobusiness->type = $request->type;
-        $dobusiness->tell_us = $request->tell_us;
-        $dobusiness->language = $request->language;
-        $dobusiness->hear = $request->hear;
-        $dobusiness->first_name = $request->first_name;
-        $dobusiness->last_name = $request->last_name;
-        $dobusiness->email = $request->email;
-        $dobusiness->address = $request->country;
-        $dobusiness->number = $request->number;
-        $dobusiness->city = $request->city;
-        $dobusiness->state = $request->city;
-        $dobusiness->country = $request->country;
-        $dobusiness->reference = $reference;
+
+        $fileName=null;
+
+        if($request->attach !== null){
+            $fileName = "images/applications/".time().$request->attachement->extension(); 
+            $request->attach->move('images/applications', $fileName);
+        }
+
+        $consultant = new consultant;
+
+        $consultant->industry = $request->industry;
+        $consultant->business_area = $request->business_area;
+        $consultant->business_long = $request->business_long;
+        $consultant->first_name = $request->first_name;
+        $consultant->last_name = $request->last_name;
+        $consultant->email = $request->email;
+        $consultant->address = $request->country;
+        $consultant->number = $request->number;
+        $consultant->city = $request->city;
+        $consultant->state = $request->city;
+        $consultant->country = $request->country;
+        $consultant->website = $request->website;
+        $consultant->zip = $request->zip;
+        $consultant->business = $request->business;
+        $consultant->tell_us = $request->tell_us;
+        $consultant->language = $request->language;
+        $consultant->hear = $request->hear;
+        $consultant->attachement = $request->attachement;
+        $consultant->reference = $reference;
 
 
-        /*if($dobusiness->save()){*/
-            Mail::to($dobusiness->email)->send(new ConultantMail($request->first_name." ".$request->last_name,$reference));
+        if($consultant->save()){
+            Mail::to($consultant->email)->send(new ConultantMail($request->first_name." ".$request->last_name,$reference));
             Mail::to("consultant@dielpi.com")->send(new ConultantNotificationMail($request->first_name." ".$request->last_name,$reference));
             return redirect()->back()->with("succes",'Thank you, your application referenced '.$reference.' has been submitted successfully. Our team will contact you to proceed with your “Become a consultant” application process.')
                                      ->with('name',$request->first_name." ".$request->last_name);
-       /* }else{
+        }else{
             return redirect()->back()->with("erreur","Error during saving");
-        }*/
+        }
 
     }
 
@@ -444,37 +471,50 @@ class FormController extends Controller
     {
         $validated = $request->validate([
             'company' => 'required|max:255',
-            'industry' => 'required|max:255',
-            'business_area' => 'required',
-            'duration' => 'required',
-            'type' => 'required',
-            'language' => 'required',
-            'hear' => 'required',
+            'business_address' => 'required|max:255',
+            'industry' => 'required',
+            'year_etablished' => 'required',
+            'contact_person' => 'required',
+            'number' => 'required',
             'email' => 'required|max:255',
-            'address' => 'required|max:255',
             'city' => 'required',
             'state' => 'required',
-            'country' => 'required'
+            'country' => 'required',
+            'core_value'=>'required',
+            'interest'=>'required',
+            'strength'=>'required',
+            'goals'=>'required',
+            'type'=>'required',
+            'expectations'=>'required',
+            'attachement'=>'file'
         ]);
         $reference = 'DPI_BP_'.time();
+
+        $fileName=null;
+
+        if($request->attach !== null){
+            $fileName = "images/applications/".time().$request->attachement->extension(); 
+            $request->attach->move('images/applications', $fileName);
+        }
         $partner = new PartenerWithUs;
  
         $partner->company = $request->company;
+        $partner->business_address = $request->business_address;
         $partner->industry = $request->industry;
-        $partner->business_area = $request->business_area;
-        $partner->business_long = $request->duration;
-        $partner->partner_with = 1;
-        $partner->type = $request->type;
-        $partner->language = $request->language;
-        $partner->hear = $request->hear;
-        $partner->first_name = $request->first_name;
-        $partner->last_name = $request->last_name;
+        $partner->year_etablished = $request->year_etablished;
+        $partner->contact_person = $request->contact_person;
+        $partner->number = $request->number;    
         $partner->email = $request->email;
-        $partner->address = $request->country;
-        $partner->number = $request->number;
         $partner->city = $request->city;
-        $partner->state = $request->city;
+        $partner->state = $request->state;
         $partner->country = $request->country;
+        $partner->core_value = $request->core_value;
+        $partner->interest = $request->interest;
+        $partner->strength = $request->strength;
+        $partner->goals = $request->goals;
+        $partner->type = $request->type;
+        $partner->expectations = $request->expectations;
+        $partner->attachement = $fileName;
         $partner->reference = $reference;
 
 
@@ -653,7 +693,7 @@ class FormController extends Controller
         $career->address = $request->country;
         $career->number = $request->number;
         $career->city = $request->city;
-        $career->state = $request->city;
+        $career->state = $request->state;
         $career->linkedin = $request->linkedin;
         $career->resume_link =  "test";//"/images/career/".$imageName;
         $career->country = $request->country;
@@ -675,20 +715,161 @@ class FormController extends Controller
     {
         $validated = $request->validate([
 
-            'email' => 'required|max:255',
-            'full_name'=>'required'
+            'email' => 'required|email|max:255',
+            'full_name'=>'required',
+            'age' => 'required',
+            'gender'=>'required',
+            'occupation' => 'required',
+            'participate'=>'required',
+            'survey' => 'required',
+            'available' => 'required',
+            'level' => 'required',
+            'comfortable'=>'required',
+            'considered' => 'required|max:255',
+            'hear'=>'required',
+            'additional_information'=>'required',
+            'number' => 'required|max:255',
         ]);
         $reference = 'PSurvey_'.time();
         $participent = new DielsurveyParticipent;
+        $participent->email = $request->email;
+        $participent->full_name = $request->full_name;
+        $participent->age = $request->age;
+        $participent->gender = $request->gender;
+        $participent->occupation = $request->occupation;
+        $participent->participate = $request->participate;
+        $participent->survey = $request->survey;
+        $participent->specify = $request->specify;
+        $participent->available = $request->available;
+        $participent->specify_available = $request->specify_available;
+        $participent->level = $request->level;
+        $participent->comfortable = $request->comfortable;
+        $participent->considered = $request->considered;
+        $participent->hear = $request->hear;
+        $participent->specify_hear = $request->specify_hear;
+        $participent->additional_information = $request->additional_information;
+        $participent->number = $request->number;
+        $participent->city = $request->city;
+        $participent->country = $request->country;
+        $participent->reference = $reference;
 
-        /*$imageName = time().'.'.$request->resume_link->extension();  
-       
-        $request->resume_link->move('images/career', $imageName);*/
-
+        if($participent->save()){
             Mail::to($request->email)->send(new participentMail($request->full_name,$reference));
             Mail::to("dielsurvey@dielpi.com")->send(new participentNotificationMail($request->full_name,$reference));
             return redirect()->back()->with("succes",'Thank you, your application referenced '.$reference.' has been submitted successfully. Our team will contact you to proceed with your “Become a participant” application process.')
                                      ->with('name',$request->full_name);
+        }else{
+            return redirect()->back()->with("erreur","Error during saving");
+        }
+                            
     }
+
+    public function Save_client(Request $request)
+    {
+        $validator = Validator::make($request->all(),[
+
+            'email' => 'required|email|max:255',
+            'full_name'=>'required',
+            'project'=>'required',
+            'compagnie' => 'required',
+            'insdustry'=>'required',
+            'requirement' => 'required',
+            'business_unit'=>'required',
+            'language' => 'required',
+            'hear' => 'required',
+            'address'=>'required',
+            'number' => 'required|max:255',
+            'attach' => 'file'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                    ->back()
+                    ->withErrors($validator)
+                    ->withInput()
+                    ->with('erreur_saving','Error during saving.'); 
+        }
+
+        $fileName=null;
+
+        if($request->attach !== null){
+            $fileName = "images/applications/".time().$request->attach->extension(); 
+            $request->attach->move('images/applications', $fileName);
+        }
+
+        $reference = 'ClientAp_'.time();
+        $client = new Client;
+        $client->email = $request->email;
+        $client->full_name = $request->full_name;
+        $client->compagnie = $request->compagnie;
+        $client->project = $request->project;
+        $client->insdustry = $request->insdustry;
+        $client->requirement = $request->requirement;
+        $client->business_unit = $request->business_unit;
+        $client->language = $request->language;
+        $client->hear = $request->hear;
+        $client->address = $request->address;
+        $client->attach = $fileName; 
+        $client->number = $request->number;
+        $client->city = $request->city;
+        $client->zip = $request->zip;
+        $client->country = $request->country;
+        $client->reference = $reference;
+
+
+        if($client->save()){
+            Mail::to($request->email)->send(new ClientMail($request->full_name,$reference));
+            Mail::to("customercare@dielpi.com")->send(new ClientNotificationMail($request->email,$request->full_name,$reference));
+            return redirect()->back()->with("succes",'Thank you, your application referenced '.$reference.' has been submitted successfully. Our team will contact you to proceed with your “Client Application” process.')
+                                     ->with('name',$request->full_name);
+        }else{
+            return redirect()->back()->with("erreur","Error during saving");
+        }
+                            
+    }
+
+    public function fund_business(Request $request)
+    {
+        $validated = $request->validate([
+
+            'email' => 'required|email|max:255',
+            'full_name'=>'required',
+            'business_name'=>'required',
+            'phone_number' => 'required',
+            'time_business'=>'required',
+            'gross_monthly' => 'required',
+            'fisco'=>'required',
+            'loan_type' => 'required',
+            'loan_amount' => 'required',
+            'tell_us'=>'required',
+            'hear' => 'required',
+        ]);
+        $reference = 'Fundbiz_'.time();
+        $fund= new Fund;
+        $fund->email = $request->email;
+        $fund->full_name = $request->full_name;
+        $fund->business_name = $request->business_name;
+        $fund->phone_number = $request->phone_number;
+        $fund->time_business = $request->time_business;
+        $fund->gross_monthly = $request->gross_monthly;
+        $fund->fisco = $request->fisco;
+        $fund->loan_type = $request->loan_type;
+        $fund->loan_amount = $request->loan_amount;
+        $fund->tell_us = $request->tell_us;
+        //$fund->attach = "file_ink"; //$request->attach;
+        $fund->hear = $request->hear;
+        $fund->reference = $reference;
+
+        if($fund->save()){
+            Mail::to($request->email)->send(new FundMail($request->full_name,$reference));
+            Mail::to("loan@dielpi.com")->send(new FundNotificationMail($request->full_name,$reference));
+            return redirect()->back()->with("succes",'Thank you, your application referenced '.$reference.' has been submitted successfully. Our team will contact you to proceed with your “Fund your business” process.')
+                                     ->with('name',$request->full_name);
+        }else{
+            return redirect()->back()->with("erreur","Error during saving");
+        }
+                            
+    }
+    
     
 }

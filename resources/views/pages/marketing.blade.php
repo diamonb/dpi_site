@@ -11,15 +11,19 @@
                 </div>
               </div>
 </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="text-center mt-4"><strong>Our Marketing services for your growth.</strong></p>
+                <p class="text-center mt-4">From strategic design and planning to support in implementation, we're here to empower your marketing journey toward success. Discover our services, and let's embark together on a path to sustainable growth.</p>     
+            </div>       
+        </div>
 
-<div class="">
-        <p class="text-center mt-4"><strong>Our Marketing services for your growth.</strong></p>
-</div>
-
-
+    </div>
 
 <div class="container mt-2">
     <div class="row">
+   
         @foreach($services as $service)
 
         <div class="col-lg-4">

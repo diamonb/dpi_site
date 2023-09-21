@@ -138,8 +138,8 @@
         ><i class="fab fa-facebook-f"></i>
       </a>
             <!-- whatsap -->
-      <a  data-mdb-toggle="tooltip" title="Whatsapp" class="btn btn-outline-light btn-floating m-1"  target="_blank" href="https://wa.me/17132924421" role="button"
-      ><i class="fab fa-whatsapp"></i
+      <a  data-mdb-toggle="tooltip" title="Google" class="btn btn-outline-light btn-floating m-1"  target="_blank" href="https://g.page/r/CfksQ29PuHe_EAI/review" role="button"
+      ><i class="fab fa-google"></i
       ></a>
 
 
@@ -176,7 +176,7 @@
     <a class="ms-1 text-white" target="_blank" href="{{route('faq')}}">FAQ</a>
   </div>
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    <a class="text-white" href="#">© 2023 DPI. All rights reserved. Powered by DPI Digital</a>
+    © 2023 DPI. All rights reserved. Powered by <a class="text-white" href="{{route('digital')}}">DPI Digital</a>
   </div>
  
   <!-- Copyright -->

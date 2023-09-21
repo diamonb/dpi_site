@@ -10,7 +10,13 @@
                 </div>
               </div>
 </div>
+
   <div class="container">
+    <div class="row">
+      <div class="col">
+      <p class="text-center mt-4">Transforming communities through empowered decisions.</p>
+      </div>
+    </div>
     <div class="row mt-4 mb-4">
           <div class="col">
           </div>
@@ -18,7 +24,7 @@
             <div class="input-group">
             <div class="form-outline">
               <input type="search" id="form1" class="form-control" />
-              <label class="form-label" for="form1">Search a DIELSurvey here</label>
+              <label class="form-label" for="form1">Search for a DIELSurvey here</label>
             </div>
             <button type="button" class="btn btn-primary">
               <i class="fas fa-search"></i>
@@ -33,12 +39,20 @@
         </div>
         @foreach($insights as $insight)
         <div class="row">
-          <div class="col-md-10">
-            <p><b>{{$insight->title}}</b></p>
-            <p><small>{!!$insight->description!!}</small></p>
+          <div class="col-md-8">
+            <p><b class="fs-10">{{$insight->title}}</b></p>
           </div>
-          <div class="col-md-2">
-            <a class="" href="{{asset($insight->file)}}" download><i data-mdb-toggle="tooltip" title="Download insight" class="justify-content-end fas fa-download"></i></a>
+          <div class="col-md-4">
+            @if($insight->file_en !==null)
+            <a href="{{asset($insight->file_en)}}" download="Insight_DIELSurvey"><img data-mdb-toggle="tooltip" title="Download the report" width="20px" src="{{asset('images/icons/united-states.png')}}" alt=""></a>&nbsp;
+            @endif
+            @if($insight->file_esp !==null)
+            <a href="{{asset($insight->file_esp)}}" download="Insight_DIELSurvey"><img  width="20px" data-mdb-toggle="tooltip" title="Descargar el informe" src="{{asset('images/icons/spain.png')}}" alt=""></a>&nbsp;
+            @endif
+            @if($insight->file_fr !==null)
+            <a href="{{asset($insight->file_fr)}}" download="Insight_DIELSurvey"><img data-mdb-toggle="tooltip" title="Téléchargez le rapport"  width="20px" src="{{asset('images/icons/france.png')}}" alt=""></a>
+            @endif
+          </p>
           </div>
         </div>         
           <hr>
@@ -58,16 +72,23 @@
           <div class="col-md-8">
               <p><b>{{$survey->title}}</b> </p>
               <p>{!!$survey->description!!}</p>
-              <p class="text-end"><i data-mdb-toggle="tooltip" title="Share" class="fas fa-share fa-2x text-success"></i> 
-              <button id="{{$survey->id_survey}}"
-              shout-button
-              class="btn btn-outline-primary"
-              data-sh-form="{{$survey->link}}"
-              data-sh-close-on-complete="false"
-              data-sh-type="slideout"
-              data-sh-direction="right"
-              sh-initial-color="#2A98C6"> Take this DIELSurvey</button>
-            </p>
+              <div class="row">
+                  <div class="col-md-6">
+                    <form action="{{route('detail_survey',$survey->id_survey)}}" method="GET">
+                      <button class="btn btn-outline-warning"  data-mdb-toggle="tooltip" title="See/Share this Survey">See/Share</button>
+                    </form>
+                  </div>
+                  <div class="col-md-6">
+                  <button id="{{$survey->id_survey}}"
+                    shout-button
+                    class="btn btn-outline-primary"
+                    data-sh-form="{{$survey->link}}"
+                    data-sh-close-on-complete="false"
+                    data-sh-type="slideout"
+                    data-sh-direction="right"
+                    sh-initial-color="#2A98C6"> Take this survey</button>
+                  </div>
+              </div>
           </div>
         </div>
         <hr>
@@ -84,7 +105,7 @@
 
                 <div class="carousel-item active text-end">
                   <img class="d-block w-100" src="{{asset('images/applaynow.jpeg')}}" alt="second slide">
-                  <span class="bg-light animate__animated animate__rubberBand "><a target="_blank" href="https://apply.fundwise.com/dpifin" class="text-warning ">To apply, click here<i class="fas fa-arrow-right"></i></a>  </span>
+                  <span class="bg-light animate__animated animate__rubberBand "><a target="_blank" href="{{route('fund')}}" class="text-warning ">To apply, click here<i class="fas fa-arrow-right"></i></a>  </span>
                 </div>
 
                 <div class="carousel-item text-end">
@@ -94,6 +115,9 @@
                 <div class="carousel-item text-end">
                   <img class="d-block w-100" src="{{asset('images/snowform_fr.jpeg')}}" alt="First slide">
                   <span class="bg-light animate__animated animate__rubberBand "><a target="_blank" href="{{route('take_service_fr')}}" class="text-success ">Cliquez ici pour souscrire<i class="fas fa-arrow-right"></i></a>  </span>
+                </div>
+                <div class="carousel-item text-end">
+                  <img class="d-block w-100" src="{{asset('images/client1.jpeg')}}" alt="slide">
                 </div>
 
             </div>
@@ -106,7 +130,7 @@
 
                 <div class="carousel-item active text-end">
                   <img class="d-block w-100" src="{{asset('images/applaynow.jpeg')}}" alt="second slide">
-                  <span class="bg-light animate__animated animate__rubberBand "><a target="_blank" href="https://apply.fundwise.com/dpifin" class="text-warning ">To apply, click here<i class="fas fa-arrow-right"></i></a>  </span>
+                  <span class="bg-light animate__animated animate__rubberBand "><a target="_blank" href="{{route('fund')}}" class="text-warning ">To apply, click here<i class="fas fa-arrow-right"></i></a>  </span>
                 </div>
 
                 <div class="carousel-item text-end">
@@ -116,6 +140,9 @@
                 <div class="carousel-item text-end">
                   <img class="d-block w-100" src="{{asset('images/snowform_fr.jpeg')}}" alt="First slide">
                   <span class="bg-light animate__animated animate__rubberBand "><a target="_blank" href="{{route('take_service_fr')}}" class="text-success ">Cliquez ici pour souscrire<i class="fas fa-arrow-right"></i></a>  </span>
+                </div>
+                <div class="carousel-item text-end">
+                  <img class="d-block w-100" src="{{asset('images/client1.jpeg')}}" alt="slide">
                 </div>
 
             </div>
@@ -127,7 +154,7 @@
 
                 <div class="carousel-item active text-end">
                   <img class="d-block w-100" src="{{asset('images/applaynow.jpeg')}}" alt="second slide">
-                  <span class="bg-light animate__animated animate__rubberBand "><a target="_blank" href="https://apply.fundwise.com/dpifin" class="text-warning ">To apply, click here<i class="fas fa-arrow-right"></i></a>  </span>
+                  <span class="bg-light animate__animated animate__rubberBand "><a target="_blank" href="{{route('fund')}}" class="text-warning ">To apply, click here<i class="fas fa-arrow-right"></i></a>  </span>
                 </div>
 
                 <div class="carousel-item text-end">
@@ -137,6 +164,9 @@
                 <div class="carousel-item text-end">
                   <img class="d-block w-100" src="{{asset('images/snowform_fr.jpeg')}}" alt="First slide">
                   <span class="bg-light animate__animated animate__rubberBand "><a target="_blank" href="{{route('take_service_fr')}}" class="text-success ">Cliquez ici pour souscrire<i class="fas fa-arrow-right"></i></a>  </span>
+                </div>
+                <div class="carousel-item text-end">
+                  <img class="d-block w-100" src="{{asset('images/client1.jpeg')}}" alt="slide">
                 </div>
 
             </div>

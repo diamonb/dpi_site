@@ -15,23 +15,25 @@ return new class extends Migration
     {
         Schema::create('consultants', function (Blueprint $table) {
             $table->id('id_sonsultant');
-            $table->string('insdustry');
+            $table->string('industry');
             $table->string('business_area');
-            $table->integer('business_long');
-            $table->string('insdustry_interest');
-            $table->string('motivation');
-            $table->integer('language');
-            $table->string('hear');
+            $table->string('business_long');
             $table->string('first_name')->nullable('true');
             $table->string('last_name')->nullable('true');
+            $table->BigInteger('number');
             $table->string('email');
-            $table->string('zip')->nullable('true');
-            $table->string('address');
-            $table->string('address_deux')->nullable('true');
+            $table->integer('country');
+            $table->string('website')->nullable('true');
             $table->string('city');
             $table->string('state');
-            $table->integer('country');
-            $table->string('resume_link');
+            $table->string('address');
+            $table->string('zip')->nullable('true');
+            $table->string('business');
+            $table->text('tell_us');
+            $table->string('language');
+            $table->string('hear');
+            $table->string('attachement');
+            $table->string('reference');
             $table->timestamps();
         });
     }

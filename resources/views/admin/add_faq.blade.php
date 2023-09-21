@@ -2,7 +2,7 @@
 @section("content")
 <div class="row">
         <div class="col-lg-12">
-            <h2 class="m-lg-4">Add<i> Team member</i></h2>
+            <h2 class="m-lg-4">Add<i>FAQ</i></h2>
 
         </div>
 
@@ -24,15 +24,33 @@
                             </ul>
                         </div>
                     @endif
-
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Categorie</label>
+                        <select class="form-control" name="categorie" id="">
+                            @foreach($cfaqs as $faq)
+                            <option value="{{$faq->id_categoriefaq}}">{{$faq->libelle}}</option>
+                            @endforeach
+                            
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Question</label>
-                        <textarea id="editor" name="question" class="form-control" rows="3"></textarea>
+                        <textarea name="question" class="form-control" rows="3"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Response</label>
-                        <textarea id="editor" name="response" class="form-control" rows="3"></textarea>
+                        <textarea id="editor" name="response"class="form-control" rows="3"></textarea>
                     </div>
+                    <script>
+                                ClassicEditor
+                                        .create( document.querySelector( '#editor' ) )
+                                        .then( editor => {
+                                                console.log( editor );
+                                        } )
+                                        .catch( error => {
+                                                console.error( error );
+                                        } );
+                            </script>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
@@ -41,4 +59,5 @@
         </div>
 
     </div>
+</div>
 @endsection

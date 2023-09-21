@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('insights', function (Blueprint $table) {
             $table->id('id_insight');
             $table->string('title');
-            $table->string('description');
-            $table->string('file');
+            $table->string('file_fr')->nullable('true');
+            $table->string('file_en')->nullable('true');
+            $table->string('file_esp')->nullable('true');
             $table->string('statut');
             $table->timestamps();
         });

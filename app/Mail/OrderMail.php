@@ -23,7 +23,7 @@ class OrderMail extends Mailable
      *
      * @return void
      */
-    public function __construct(String $fullname, String $reference, String $order_ref,String $order_num)
+    public function __construct(String $fullname, String $reference, String $order_ref,int $order_num)
     {
         $this->full_name = $fullname;
         $this->reference = $reference;

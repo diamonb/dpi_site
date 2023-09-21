@@ -16,25 +16,28 @@ return new class extends Migration
         Schema::create('partener_with_us', function (Blueprint $table) {
             $table->id('id_partnerwithus');
             $table->string('company');
+            $table->string('business_address');
             $table->string('industry');
-            $table->string('business_area');
-            $table->integer('business_long');
-            $table->string('partner_with');
-            $table->integer('type');
-            $table->integer('website')->nullable('true');
-            $table->string('language')->nullable('true');
-            $table->string('hear')->nullable('true');
-            $table->string('first_name')->nullable('true');
-            $table->string('last_name')->nullable('true');
+            $table->integer('year_etablished');
+            $table->string('contact_person');
+            $table->bigInteger('number');
             $table->string('email');
-            $table->integer('number');
-            $table->string('zip')->nullable('true');
-            $table->string('address');
-            $table->string('address_deux')->nullable('true');
+            $table->integer('website')->nullable('true');
+            $table->integer('country');
             $table->string('city');
             $table->string('state');
+            $table->string('zip')->nullable('true');
+            $table->text('core_value');
+            $table->text('interest');
+            $table->text('goals');
+            $table->string('type');
+            $table->string('expectations');
+            $table->string('strength');
+            $table->string('language')->nullable('true');
+            $table->string('hear')->nullable('true');
+            $table->string('attachement')->nullable('true');
             $table->string('reference');
-            $table->integer('country');
+            
             $table->timestamps();
         });
     }

@@ -9,7 +9,9 @@ use App\Models\Domain;
 use App\Models\Country;
 use App\Models\Service;
 use App\Models\Testimonial;
+use App\Models\CategorieFaq;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AccueilController extends Controller
 {
@@ -50,8 +52,16 @@ class AccueilController extends Controller
         return view('pages/marketing')->with(compact('services'));
     }
     public function faq(){
+
+        $cfaqs =  DB::table('faqs')
+        ->join('categorie_faqs', 'faqs.id_categorie_faq', '=', 'categorie_faqs.id_categoriefaq')
+        ->select('faqs.*', 'categorie_faqs.libelle')
+        ->get();
+        //->orderBy('faqs.id_categorie_faq')
+
         $faqs = Faq::All();
-        return view('pages/faq')->with(compact('faqs'));
+        $cfaqs = CategorieFaq::orderBy('libelle','ASC')->get();
+        return view('pages/faq')->with(compact('faqs','cfaqs'));
     }
     public function digital(){
         $services = Service::where('id_type_service', 3)->get();
@@ -124,6 +134,17 @@ class AccueilController extends Controller
         $countries = Country::All();
         $domains = Domain::All();  
         return view('dielsurvey/become_participent')->with(compact('countries','domains'));
+    }
+    public function becomeClient(){
+        $countries = Country::All();
+        $domains = Domain::All();  
+        return view('pages/become_client')->with(compact('countries','domains'));
+    }
+
+    public function fund(){
+        $countries = Country::All();
+        $domains = Domain::All();  
+        return view('pages/fund_business')->with(compact('countries','domains'));
     }
 
 

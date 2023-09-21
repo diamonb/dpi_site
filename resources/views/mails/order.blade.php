@@ -54,9 +54,9 @@
                 <p>We are pleased to inform you that your order has been successfully processed. Our dedicated team will be in touch with you shortly to initiate the next steps.</p>  
                 <p>Thank you for choosing DPI. We look forward to serving you.</p>
                 <p>Order ref: <strong><?=$reference?></strong></p>
-                <p>Service ref: <a href="https://dielpi.com/service_ch/".<?=$order_num?>><strong><?=$order_ref?></strong></a></p>
+                <p>Service ref: <a href="https://dielpi.com/services_ch/<?=$order_num?>"><strong><?=$order_ref?></strong></a></p>
                 <p>Best regards, </p>
-                <p>DPI Team</p>
+                <p>The DPI Team</p>
             </div>
             <div class="content2">
                 <a  target="_blank" href="https://www.facebook.com/dielpartnersinternational" ><img src="https://dev.dielpi.com/images/social/facebook.png" alt="" width="32px"></a>

@@ -23,28 +23,26 @@
                         </div>
                     @endif
                     <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" class="form-control" id="title" name="title">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Description</label>
-                        <textarea id="editor" name="description" class="form-control" rows="3"></textarea>
-                        <script>
-                            ClassicEditor
-                                    .create( document.querySelector( '#editor' ) )
-                                    .then( editor => {
-                                            console.log( editor );
-                                    } )
-                                    .catch( error => {
-                                            console.error( error );
-                                    } );
-                        </script>
+                        <label for="title">Survey</label>
+                        <select name="title" id="" class="form-control">
+                        <option value="">Aucun</option>
+                            @foreach($surveys as $survey)
+                            <option value="{{$survey->title}}">{{$survey->title}}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="form-group mt-4">
-                        <label for="file">Choose file</label>
-                        <input type="file" name="file" class="form-control" id="file">
+                        <label for="file">Choose file fr</label>
+                        <input type="file" name="file_fr" class="form-control" id="file">
+                    </div>
+                    <div class="form-group mt-4">
+                        <label for="file">Choose file en</label>
+                        <input type="file" name="file_en" class="form-control" id="file">
+                    </div>
+                    <div class="form-group mt-4">
+                        <label for="file">Choose file esp</label>
+                        <input type="file" name="file_esp" class="form-control" id="file">
                     </div>
                     </div>
                     <div class="card-footer">

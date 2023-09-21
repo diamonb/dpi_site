@@ -7,6 +7,7 @@ use App\Http\Controllers\AccueilController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardUserController;
+use App\Http\Controllers\DielBusinessNewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,8 +29,13 @@ Route::get('become_founder', [AccueilController::class,'founder'])->name('founde
 Route::get('career', [AccueilController::class,'career'])->name('career');
 Route::get('sponsor', [AccueilController::class,'sponsor'])->name('sponsor');
 Route::get('do_business_with_us', [AccueilController::class,'doBusiness'])->name('dobusiness');
+Route::get('client_application', [AccueilController::class,'becomeClient'])->name('becomeclient');
+Route::get('/fund_your_business', [AccueilController::class,'fund'])->name('fund');
 Route::post('saveservicenowservice', [FormController::class,'save_servicenow_service'])->name('saveservicenowservice'); 
 Route::post('saveservicenowservice_fr', [FormController::class,'save_servicenow_service_fr'])->name('saveservicenowservicefr');
+Route::post('fundbusiness', [FormController::class,'fund_business'])->name('fund_business');
+
+
 
 Route::any('dielsurvey/become_participant', [AccueilController::class,'becomeParticpent'])->name('becomeparticipent');
 
@@ -69,6 +75,8 @@ Route::post('/saveinvest', [FormController::class,'Save_invest'])->name('saveinv
 Route::post('/savesponsor', [FormController::class,'Save_sponsors'])->name('savesponsors');
 Route::post('/savecareer', [FormController::class,'Save_career'])->name('savecareer');
 Route::post('/saveparticipent', [FormController::class,'Save_dielsurvey_participent'])->name('saveparticipent');
+Route::post('/saveclient', [FormController::class,'Save_client'])->name('saveclient');
+
 
 
 
@@ -107,7 +115,18 @@ Route::get('/about#when_call', [AccueilController::class,'about'])->name('about_
 //
 Route::get('/avis', [AccueilController::class,'avis'])->name('avis');
 Route::get('/dielshop', [ShopController::class,'accueil'])->name('dielshop');
+
 Route::get('/dielsurvey', [SurveyController::class,'accueil'])->name('dielsurvey');
+Route::get('/dielsurvey/{id}', [SurveyController::class,'detail'])->name('detail_survey');
+
+Route::get('/social-media-share', [SurveyController::class,'ShareWidget']);
+
+// DielBusinessNew 
+Route::get('/dielBusinessNews', [DielBusinessNewController::class,'index'])->name('diel_business_news');
+Route::get('/dielBusinessNews/{id}', [DielBusinessNewController::class,'detail'])->name('detail_diel_business_news');
+Route::get('dashboard/DielBusinessNews', [DielBusinessNewController::class,'index'])->name('bnew_list');
+Route::get('dashboard/DielBusinessNews', [DielBusinessNewController::class,'create'])->name('add_news');
+Route::post('dashboard/DielBusinessNews', [DielBusinessNewController::class,'store'])->name('add_news');
 
 //User dashboard
 Route::get('/user_dashboard', [DashboardUserController::class,'accueil'])->name('dashboardUser');
@@ -137,6 +156,8 @@ Route::get('dashboard/list_insight', [DashboardController::class,'listInsight'])
 Route::get('dashboard/add_faq', [DashboardController::class,'addFaq'])->name('add_faq'); 
 Route::post('dashboard/store_faq', [DashboardController::class,'storeFaq'])->name('store_faq');
 Route::get('dashboard/list_faq', [DashboardController::class,'listFaq'])->name('list_faq'); 
+Route::post('dashboard/store_categorie_faq', [DashboardController::class,'storeCategorieFaq'])->name('store_categorie_faq');
+Route::get('dashboard/add_categorie_faq', [DashboardController::class,'addCategorieFaq'])->name('add_categorie_faq'); 
 
 
 Route::get('dashboard/add_service', [DashboardController::class,'addService'])->name('add_service');
@@ -175,7 +196,13 @@ Route::get('dashboard/add_team_member', [DashboardController::class,'addTeamMemb
 Route::post('dashboard/add_team_member', [DashboardController::class,'storeTeamMember'])->name('store_team_member');
 
 
-Route::get('dashboard/services_subscription', [DashboardController::class,'servicesSubscription'])->name('services_subscription');
+Route::get('dashboard/services_subscription', [DashboardController::class,'servicesSubscription'])->name('services_subscription'); 
+Route::get('dashboard/order_subscription', [DashboardController::class,'OrderSubscription'])->name('order_subscription');
+
+// applications listview
+Route::get('dashboard/client_application_listview', [DashboardController::class,'listViewClient'])->name('list_view_client');
+Route::get('dashboard/do_business_list_view', [DashboardController::class,'listViewDobusiness'])->name('list_view_do_business');
+
 
 Route::post('image-upload', [ImageUploadController::class, 'storeImage'])->name('image.upload');
 require __DIR__.'/auth.php';

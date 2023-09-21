@@ -35,31 +35,66 @@
 
         <form id=""  action="{{route('saveparticipent')}}" method="POST">
         {{csrf_field()}}
-            <div class="form-group">
-                <label for="name"><strong>Full Name *</strong></label>
-                <input type="text" class="form-control" id="name" name="full_name" placeholder="">
-            </div>
-            <br>
-            
+        <div class="form-group">
+                    <label for="name"><strong>Full Name *</strong></label>
+                    <input type="text" class="form-control" id="name" name="full_name" placeholder="">
+        </div>
+        <br>
+        <div class="row">
         @error('session')
         <span class="text-danger">{{$message}}</span><br>
         @enderror
-            <div class="form-group">
-                <label for=""><strong>Age *</strong></label>
-                <input class="form-control" type="number" name="age" id="" >
+            <div class="form-group col-md-6">
+                <label for="email"><strong>Email address*</strong></label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="">
             </div>
-            <br>
-            <div class="form-group">
+
+            <div class="form-group col-md-6">
+                <label for="number"><strong>Phone Number*</strong></label>
+                <input type="number" class="form-control" name="number" id="number" placeholder="">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for=""><strong>Age *</strong></label>
+                    <input class="form-control" type="number" name="age" id="" >
+                </div>
+        
+            </div>
+            <div class="form-group col-md-6">
                 <label for=""><strong>Gender *</strong></label>
-                <select class="form-control" name="sexe" id="">
+                <select class="form-control" name="gender" id="">
                     <option value="M">Male</option>
                     <option value="F">Female</option>
                 </select>
             </div>
-            <br>
+
+        </div>
+
+        <br>
+        <div class="row">
+
+            <div class="form-group col-md-6">
+                <label class="" for="country"><strong>Country</strong></label>
+                <select name="country" class="form-select" id="country">
+                    @foreach($countries as $country)
+                    <option value="{{$country->id}}">{{$country->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="city"><strong>City/town *</strong></label>
+                <input type="text" class="form-control" name="city" id="city" placeholder="">
+            </div>
+
+        </div>
+        <br>
             <div class="form-group">
                 <label for=""><strong>Occupation *</strong></label>
-                <input class="form-control" type="text" name="age" id="" >
+                <input class="form-control" type="text" name="occupation" id="" >
             </div>
             <br>
             <div class="form-group">
@@ -70,7 +105,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="experience_it" id="experience" value="yes">
+                            <input class="form-check-input" type="radio" name="participate"  value="yes">
                             <label class="form-check-label" for="experience">
                             Yes
                             </label>
@@ -78,7 +113,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="experience_it" id="experience2" value="no">
+                            <input class="form-check-input" type="radio" name="participate" value="no">
                             <label class="form-check-label" for="experience2">
                             No
                             </label>
@@ -89,17 +124,17 @@
             <br>
             <div class="form-group">
                 <label for=""><strong>Which method of survey participation would you prefer? *</strong></label>
-                <select class="form-control" name="sexe" id="">
-                    <option value="M">Online survey</option>
-                    <option value="F">In-person interview</option>
-                    <option value="M">Phone interview</option>
-                    <option value="F">Other (please specify)</option>
+                <select class="form-control" name="survey" id="">
+                    <option value="Online survey">Online survey</option>
+                    <option value="In-person interview">In-person interview</option>
+                    <option value="Phone interview">Phone interview</option>
+                    <option value="Other">Other (please specify)</option>
                 </select>
             </div>
             <br>
             <div class="form-group">
                 <label for=""><strong>Specify *</strong></label>
-                <input class="form-control" type="text" name="other" id="" >
+                <textarea class="form-control" name="specify" id="" > </textarea>
             </div>
             <br>
             <div class="form-group">
@@ -110,16 +145,16 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="experience_it" id="experience" value="yes">
-                            <label class="form-check-label" for="experience">
+                            <input class="form-check-input" type="radio" name="available" value="yes">
+                            <label class="form-check-label" >
                             Yes
                             </label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="experience_it" id="experience2" value="no">
-                            <label class="form-check-label" for="experience2">
+                            <input class="form-check-input" type="radio" name="available"  value="no">
+                            <label class="form-check-label" >
                             No
                             </label>
                         </div>
@@ -129,7 +164,7 @@
             <br>
             <div class="form-group">
                 <label for=""><strong>Specify *</strong></label>
-                <input class="form-control" type="text" name="other" id="" >
+                <textarea class="form-control" name="specify_available" id="" > </textarea>
             </div>
             <br>
             <div class="form-group">
@@ -137,13 +172,11 @@
             <span class="text-danger">{{$message}}</span> <br>
             @enderror
                 <label for=""><strong>What is your level of familiarity with surveys? *</strong></label>
-                <div class="row">
-                    <select class="form-control" name="sexe" id="">
-                        <option value="M">Very familiar</option>
-                        <option value="F">somewhat familiar</option>
-                        <option value="M">not familiar at all</option>
+                    <select class="form-control" name="level" id="">
+                        <option value="Very familiar">Very familiar</option>
+                        <option value="somewhat familiar">somewhat familiar</option>
+                        <option value="not familiar at all">not familiar at all</option>
                     </select>
-                </div>   
             </div>
             <br>
             <div class="form-group">
@@ -154,7 +187,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="experience_it" id="experience" value="yes">
+                            <input class="form-check-input" type="radio" name="comfortable" value="yes">
                             <label class="form-check-label" for="experience">
                             Yes
                             </label>
@@ -162,7 +195,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="experience_it" id="experience2" value="no">
+                            <input class="form-check-input" type="radio" name="comfortable" value="no">
                             <label class="form-check-label" for="experience2">
                             No
                             </label>
@@ -179,7 +212,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="experience_it" id="experience" value="yes">
+                            <input class="form-check-input" type="radio" name="considered"  value="yes">
                             <label class="form-check-label" for="experience">
                             Yes
                             </label>
@@ -187,7 +220,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="experience_it" id="experience2" value="no">
+                            <input class="form-check-input" type="radio" name="considered" value="no">
                             <label class="form-check-label" for="experience2">
                             No
                             </label>
@@ -204,7 +237,7 @@
                 <div class="row">
                 <div class="col-md-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="duration" id="duration" value="duration" >
+                            <input class="form-check-input" type="radio" name="hear" value="Email invitation " >
                             <label class="form-check-label" for="duration">
                             Email invitation 
                             </label>
@@ -212,15 +245,15 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="duration" id="duration" value="duration" >
+                            <input class="form-check-input" type="radio" name="hear" value="Social media c." >
                             <label class="form-check-label" for="duration">
-                            Social media c.
+                            Social media
                             </label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="duration" id="duration" value="duration" >
+                            <input class="form-check-input" type="radio" name="hear" value="Website" >
                             <label class="form-check-label" for="duration">
                             Website
                             </label>
@@ -230,7 +263,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="duration" id="duration" value="duration" >
+                            <input class="form-check-input" type="radio" name="hear" value="Online advertisement" >
                             <label class="form-check-label" for="duration">
                             Online advertisement
                             </label>
@@ -238,7 +271,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="duration" id="duration" value="duration" >
+                            <input class="form-check-input" type="radio" name="hear" value="Word of mouth" >
                             <label class="form-check-label" for="duration">
                             Word of mouth
                             </label>
@@ -246,7 +279,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="duration" id="duration" value="duration" >
+                            <input class="form-check-input" type="radio" name="hear" id="duration" value="Other" >
                             <label class="form-check-label" for="duration">
                             Other (please specify)
                             </label>
@@ -257,43 +290,13 @@
             <br>
             <div class="form-group">
                 <label for=""><strong>Specify *</strong></label>
-                <input class="form-control" type="text" name="other" id="" >
+                <input class="form-control" type="text" name="specify_hear" id="" >
             </div>
             <br>
             <div class="form-group">
                 <label for=""><strong>Is there any additional information you would like to provide? *</strong></label>
-                <textarea class="form-control" name="" id=""  ></textarea>
+                <textarea class="form-control" name="additional_information" id=""  ></textarea>
             </div>
-            <br>
-            <fieldset class="scheduler-border">
-                <legend class="scheduler-border">Contact Informations</legend>
-                    <div class="row">
-        @error('email')
-        <span class="text-danger">{{$message}}</span>
-        @enderror
-                            <div class="form-group">
-                                <label for="email"><strong>Email *</strong></label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="number"><strong>Number *</strong></label>
-                                <input type="number" class="form-control" name="number" id="number" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label class="" for="country"><strong>Country</strong></label>
-                                <select class="form-select" id="country" name="country">
-                                    @foreach($countries as $country)
-                                    <option value="{{$country->id}}">{{$country->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                         <div class="form-group">
-                                <label for="town"><strong>City/Town </strong></label>
-                                <input type="text" class="form-control" name="town" id="town" placeholder="">
-                            </div>
-                            
-                    </div>
-            </fieldset>
             <br>
             <div class="text-center text-md-left">
                 <button type="submit" class="btn btn-dpi" type=>Send</button>

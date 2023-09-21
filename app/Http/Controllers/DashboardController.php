@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Faq;
 use App\Models\Page;
 use App\Models\Team;
+use App\Models\Order;
+use App\Models\Client;
 use App\Models\Domain;
 use App\Models\Survey;
 use App\Models\Contact;
@@ -15,7 +17,9 @@ use App\Models\Newsletter;
 use App\Models\Servicenow;
 use App\Models\Testimonial;
 use App\Models\TypeService;
+use App\Models\CategorieFaq;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class DashboardController extends Controller
@@ -172,7 +176,9 @@ class DashboardController extends Controller
     public function addInsight()
     {
 
-        return view("admin.add_insight");
+        $surveys = Survey::all();
+        //dd($surveys);
+        return view("admin.add_insight")->with(compact('surveys'));
 
     }
     public function storeSurvey(Request $request)
@@ -221,14 +227,52 @@ class DashboardController extends Controller
 
     public function addFaq()
     {
+        $cfaqs = CategorieFaq::all();
+        return view("admin.add_faq")->with(compact('cfaqs'));
 
-        return view("admin.add_faq");
+    }
+
+    public function addCategorieFaq()
+    {
+
+        return view("admin.add_categorie_faq");
 
     }
     public function listFaq()
     {
         $faqs = Faq::All();
         return view("admin.list_faq")->with(compact('faqs'));
+
+    }
+
+    public function storeCategorieFaq(Request $request)
+    {
+        if ($request->isMethod('post')) {
+
+            $validator = Validator::make($request->all(), [
+                'libelle' => 'required',
+            ]);
+            
+            if ($validator->fails()) {
+                return redirect()
+                        ->back()
+                        ->withErrors($validator)
+                        ->withInput()
+                        ->with('erreur_saving','Error during saving.'); 
+            }
+
+            $cfaq = new CategorieFaq;
+     
+            $cfaq->libelle = $request->libelle;
+
+            if($cfaq->save()){
+                return redirect()->back()->with("succes","Categorie FAQ saved");
+            }else{
+                return redirect()->back()->with("erreur","Error during saving");
+            }
+        }
+       
+              
 
     }
     public function storeFaq(Request $request)
@@ -252,6 +296,7 @@ class DashboardController extends Controller
      
             $faq->question = $request->question;
             $faq->response = $request->response;
+            $faq->id_categorie_faq = $request->categorie;
 
             if($faq->save()){
                 return redirect()->back()->with("succes","FAQ saved");
@@ -269,8 +314,9 @@ class DashboardController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'title' => 'required|max:255',
-                'description' => 'required',
-                'file'=>'required|file'
+                'file_fr' => 'file',
+                'file_en' => 'file',
+                'file_esp' => 'file',
             ]);
             
             if ($validator->fails()) {
@@ -280,22 +326,42 @@ class DashboardController extends Controller
                         ->withInput()
                         ->with('erreur_saving','Error during saving.'); 
             }
-     
-            $fileName = time().'.'.$request->file->extension();  
-       
-            $request->file->move('files/insight', $fileName);
+            $fileName_fr=null;
+            $fileName_en=null;
+            $fileName_esp=null;
+
+            if($request->file_fr !== null){
+            $fileName_fr = "images/insight/".time().'fr.'.$request->file_fr->extension(); 
+            }
+            if($request->file_en !== null){
+            $fileName_en = "images/insight/".time().'en.'.$request->file_en->extension();    
+            } 
+            if($request->file_esp !== null){     
+            $fileName_esp = "images/insight/".time().'esp.'.$request->file_esp->extension(); 
+            }
+            //
+            if($request->file_fr !== null){
+            $request->file_fr->move('images/insight', $fileName_fr);
+            }
+            if($request->file_en !== null){
+            $request->file_en->move('images/insight', $fileName_en);
+            }
+            if($request->file_esp !== null){
+            $request->file_esp->move('images/insight', $fileName_esp);
+            }
 
             $insight = new Insight;
      
             $insight->title = $request->title;
-            $insight->description = $request->description;
-            $insight->file = "/files/insight/".$fileName;
+            $insight->file_fr = $fileName_fr;
+            $insight->file_en = $fileName_en;
+            $insight->file_esp = $fileName_esp;
             $insight->statut = "no";
 
             if($insight->save()){
-                return redirect()->back()->with("succes","Insight saved");
+                return redirect()->back()->with("succes","Insight published successfully");
             }else{
-                return redirect()->back()->with("erreur","Error during saving");
+                return redirect()->back()->with("erreur","Error during publishing");
             }
         }
        
@@ -305,7 +371,7 @@ class DashboardController extends Controller
     public function listSurvey()
     {
 
-        $surveys = Survey::All();
+        $surveys = Survey::where('statut', 'no')->orderBy('id_survey', 'DESC')->get();
         return view("admin.list_survey")->with(compact('surveys'));
 
     }
@@ -313,8 +379,9 @@ class DashboardController extends Controller
     public function deleteSurvey(Request $request)
     {
         $survey = Survey::where('id_survey', $request->id_survey)->first();
-        $survey->delete();
-        return redirect()->route('list_survey')->with("succes","Survey deleted successfuly");
+        $survey->statut = "yes";
+        $survey->update();
+        return redirect()->route('list_survey')->with("succes","Survey archived successfuly");
     }
 
     public function deleteMember(Request $request)
@@ -502,6 +569,53 @@ class DashboardController extends Controller
         return view("admin.list_snow_subscribe")->with(compact('servicenows'));
 
     }
+
+    public function OrderSubscription()
+    {
+
+        $orders = DB::table('orders')
+            ->join('services', 'orders.id_service', '=', 'services.id_service')
+            ->select('orders.*', 'services.libelle')
+            ->get();
+
+        return view("admin.list_orders")->with(compact('orders'));
+
+    }
+
+    public function listViewClient()
+    {
+
+        $clients =  DB::table('clients')
+        ->join('country', 'clients.country', '=', 'country.id')
+        ->select('clients.*', 'country.name')
+        ->get();
+
+        return view("admin.clients_listview")->with(compact('clients'));
+
+    }
+
+    public function listViewDobusiness()
+    {
+
+        $dobusinesses =  DB::table('dobusinesses')
+        ->join('country', 'dobusinesses.country', '=', 'country.id')
+        ->select('dobusinesses.*', 'country.name')
+        ->get();
+
+        return view("admin.do_business_listview")->with(compact('dobusinesses'));
+
+    }
+    public function listViewDielBusinessNews()
+    {
+
+        $dobusinesses =  DB::table('dobusinesses')
+        ->join('country', 'dobusinesses.country', '=', 'country.id')
+        ->select('dobusinesses.*', 'country.name')
+        ->get();
+
+        return view("admin.list_bnews")->with(compact('dobusinesses'));
+
+    }   
      
     
        

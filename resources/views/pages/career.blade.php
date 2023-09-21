@@ -7,12 +7,13 @@
 <div class="row ">
 
     <!--Grid column-->
-    <div class="col-md-6">
+    <div class="col-lg-6">
         <img src="{{asset('images/career.png')}}" width="100%" alt="">
     </div>
 
-    <div class="col-md-6">
-    <h2 class="text-center w-responsive mx-auto h1">Join our great family!</h2>
+    <div class="col-lg-6">
+    <h2 class="text-center w-responsive mx-auto h1">Join our great family</h2>
+    <cite>Unleash your potential with us! This career application is your gateway to joining our dynamic team. Showcase your skills, passion, and aspirations as we explore exciting opportunities together. Let's build a rewarding and fulfilling career that makes a real difference. Apply now and take the first step towards a future full of growth and success!</cite>
         @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -39,13 +40,80 @@
 
         <form id="contact-form" name="contact-form" action="{{route('savecareer')}}" method="POST">
         {{csrf_field()}}
+        <br>
             <div class="form-group">
                 <label for="education_level"><strong> Highest level of education you have completed</strong></label>
                 <input type="text" class="form-control" id="education_level" name="education_level" placeholder="">
             </div>
+            <br>
             <div class="form-group">
                 <label for="Field"><strong>Field *</strong></label>
                 <input type="text" class="form-control" id="Field" name="field" placeholder="">
+            </div>
+            <br>
+            <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="first_name"><strong>First name</strong></label>
+                    <input type="text" class="form-control" name="first_name" id="first_name" placeholder="">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="last_name"><strong>Last name</strong></label>
+                    <input type="text" class="form-control" name="last_name" id="last_name" placeholder="">
+                </div>
+        
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="number"><strong>Phone Number*</strong></label>
+                <input type="number" class="form-control" name="number" id="number" placeholder="">
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="email"><strong>Email address*</strong></label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="">
+            </div>
+        </div>
+        <br>
+        <div class="form-group ">
+            <label for="Website"><strong>Website URL</strong></label>
+            <input type="text" class="form-control" id="Website" name="website" placeholder="">
+        </div>
+        <br>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label class="" for="country"><strong>Country</strong></label>
+                    <select name="country" class="form-select" id="country">
+                        @foreach($countries as $country)
+                        <option value="{{$country->id}}">{{$country->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="city"><strong>City/town *</strong></label>
+                    <input type="text" class="form-control" name="city" id="city" placeholder="">
+                </div>         
+            </div>
+            <br>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="state"><strong>State / Province *</strong></label>
+                    <input type="text" class="form-control" id="state" name="state" placeholder="">
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="adress"><strong>Address*</strong></label>
+                    <input type="text" class="form-control" name="address" id="adresse" placeholder="">
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="zip"><strong>Zip code</strong></label>
+                <input type="zip" class="form-control" name="zip" id="zip" placeholder="">
             </div>
             <br>
             <div class="form-group">
@@ -162,22 +230,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="hear" id="hear" value="4">
-                            <label class="form-check-label" for="">
-                            Current Business
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="hear" id="hear" value="5">
-                            <label class="form-check-label" for="">
-                            Previous Business
-                            </label>
-                        </div>
-                    </div>
+                    
                     <div class="col-md-4">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="hear" id="hear" value="6">
@@ -185,10 +238,7 @@
                             Friend (word of mouth)
                             </label>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
+                        <div class="col-md-4">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="hear" id="hear" value="7">
                             <label class="form-check-label" for="">
@@ -196,65 +246,10 @@
                             </label>
                         </div>
                     </div>
+                    </div>
                 </div>
                 
             </div>
-            <fieldset class="scheduler-border">
-                <legend class="scheduler-border">Candidate details</legend>
-                <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="first_name"><strong>First name</strong></label>
-                                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="last_name"><strong>Last name</strong></label>
-                                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="">
-                            </div>
-                   
-                        </div>
-                    </div>
-                    <div class="row">
-                            <div class="form-group">
-                                <label for="email"><strong>Email *</strong></label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="number"><strong>Number *</strong></label>
-                                <input type="number" class="form-control" name="number" id="number" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="zip"><strong>Zip/Postal code</strong></label>
-                                <input type="zip" class="form-control" name="zip" id="zip" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="adress"><strong>Address *</strong></label>
-                                <input type="text" class="form-control" name="address" id="adresse" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="adresse_deux"><strong>Address 2</strong></label>
-                                <input type="text" class="form-control" name="adresse_deux"  id="adresse_deux" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="city"><strong>City/town *</strong></label>
-                                <input type="text" class="form-control" name="city" id="city" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="state"><strong>State / Province *</strong></label>
-                                <input type="text" class="form-control" id="state" name="state" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label class="" for="country"><strong>Country</strong></label>
-                                <select name="country" class="form-select" id="country">
-                                    @foreach($countries as $country)
-                                    <option value="{{$country->id}}">{{$country->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                    </div>
-            </fieldset>
             <div class="row">
             <div class="form-group mt-2">
                 <label for="linkedin"><strong>Linkedin </strong></label>

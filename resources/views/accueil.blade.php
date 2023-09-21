@@ -23,7 +23,7 @@
               <div class="carousel-item">
                 <img class="d-block w-100" src="{{asset('images/bannieres/fund.jpg')}}" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                  <h5> <span class="bg-dark"><a target="_blank" href="https://apply.fundwise.com/dpifin"  class="text-warning ">To apply, click here<i class="fas fa-arrow-right"></i></a>  </span></h5>
+                  <h5> <span class="bg-dark"><a target="_blank" href="{{route('fund')}}"  class="text-warning ">To apply, click here<i class="fas fa-arrow-right"></i></a>  </span></h5>
                   <p>...</p>
                 </div>
               </div>

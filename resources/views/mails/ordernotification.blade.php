@@ -51,7 +51,7 @@
                 <img src="https://dev.dielpi.com/images/logo.jpeg" height="100" alt="DPI Logo" loading="lazy"/>
                 <hr>
                 <p>Dear Team, </p>
-                <p>We are delighted to announce that order # has been successfully processed. Kindly reach out to the client promptly to proceed with the next steps.</p>  
+                <p>We are delighted to announce that order has been successfully processed. Kindly reach out to the client promptly to proceed with the next steps.</p>  
                 <p>Thank you,</p>
                 <p>Commande ref: <strong><?=$reference?></strong></p>
                 <p>Service ref: <a ta href="https://dev.dielpi.com/service_ch/".<?=$order_num?>></a><strong> <?=$order_ref?></strong></p>

@@ -416,6 +416,27 @@
               </ul>
             </div>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#applications" aria-expanded="false" aria-controls="ui-basic">
+              <i class="typcn typcn-document-text menu-icon"></i>
+              <span class="menu-title">Applications</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="applications">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{route('list_view_client')}}">Client Application</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('list_view_do_business')}}">Do business</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('update_r_r_policy')}}">Consultant</a></li>               
+                <li class="nav-item"> <a class="nav-link" href="{{route('update_terms')}}">Partener</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('update_shipping_policy')}}">Founder</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('update_r_r_policy')}}">Invest</a></li>               
+                <li class="nav-item"> <a class="nav-link" href="{{route('update_terms')}}">Sponsor/donate</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('update_shipping_policy')}}">Fund</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('update_r_r_policy')}}">Career</a></li>               
+              </ul>
+            </div>
+          </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
               <i class="typcn typcn-film menu-icon"></i>
@@ -446,9 +467,22 @@
             </div>
           </li>
           <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#DIELBusinesNew" aria-expanded="false" aria-controls="DIELBusinesNew">
+              <i class="typcn typcn-chart-pie-outline menu-icon"></i>
+              <span class="menu-title">DIELBNews</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="DIELBusinesNew">
+              <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="{{route('add_news')}}">Add News</a></li>   
+       
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#service" aria-expanded="false" aria-controls="service">
               <i class="typcn typcn-chart-pie-outline menu-icon"></i>
-              <span class="menu-title">Service</span>
+              <span class="menu-title">Services</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="service">
@@ -456,7 +490,8 @@
                 <li class="nav-item"> <a class="nav-link" href="{{route('list_service')}}">Service list</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{route('add_service')}}">Add service</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{route('add_type_service')}}">Add service type</a></li>  
-                <li class="nav-item"> <a class="nav-link" href="{{route('services_subscription')}}">Subscriptions</a></li>            
+                <li class="nav-item"> <a class="nav-link" href="{{route('services_subscription')}}">Snow listview</a></li>         
+                <li class="nav-item"> <a class="nav-link" href="{{route('order_subscription')}}">Order listview </a></li>       
               </ul>
             </div>
           </li>
@@ -484,7 +519,8 @@
             <div class="collapse" id="faq">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="{{route('list_faq')}}">FAQ list</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{route('add_faq')}}">Add FAQ</a></li>            
+                <li class="nav-item"> <a class="nav-link" href="{{route('add_categorie_faq')}}">Add FAQ Category </a></li>      
+                <li class="nav-item"> <a class="nav-link" href="{{route('add_faq')}}">Add FAQ</a></li>          
               </ul>
             </div>
           </li>
